@@ -1,6 +1,6 @@
 package com.kinga.microservice.reservation.domain;
 
-import com.kinga.microservice.reservation.commands.Position;
+import com.kinga.microservice.reservation.modeles.Position;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Document(collection = "reserved")
 public abstract class Reserved {
     @Id
-    private ObjectId _id;;
+    private ObjectId _id;
     @NotNull
     private String user;
     private Integer depart;

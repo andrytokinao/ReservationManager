@@ -9,7 +9,7 @@ import java.util.Date;
 @Document(collection = "actions")
 public class Action {
     @Id
-    private ObjectId id;;
+    private ObjectId id;
     private String type;
     private Date date;
     private String user;
@@ -22,6 +22,14 @@ public class Action {
     public ObjectId getId() {
         return id;
     }
+
+    public String getStringId() {
+        return getId().toHexString();
+    }
+    public void setStringId(String id) {
+       setId(new ObjectId(id));
+    }
+
 
     public void setId(ObjectId id) {
         this.id = id;

@@ -1,7 +1,5 @@
-package com.kinga.microservice.reservation.commands;
+package com.kinga.microservice.reservation.modeles;
 
-
-import java.math.BigDecimal;
 
 /**
  * Created by jt on 1/10/17.

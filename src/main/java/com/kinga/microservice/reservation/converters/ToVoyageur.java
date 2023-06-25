@@ -1,7 +1,7 @@
 package com.kinga.microservice.reservation.converters;
 
 
-import com.kinga.microservice.reservation.commands.VoyageurForm;
+import com.kinga.microservice.reservation.modeles.VoyageurForm;
 import com.kinga.microservice.reservation.domain.Voyageur;
 import org.bson.types.ObjectId;
 import org.springframework.core.convert.converter.Converter;

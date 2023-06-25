@@ -1,8 +1,8 @@
 package com.kinga.microservice.reservation.controllers;
 
 
-import com.kinga.microservice.reservation.ReservationService;
-import com.kinga.microservice.reservation.commands.VoyageurForm;
+import com.kinga.microservice.reservation.VoyageurService;
+import com.kinga.microservice.reservation.modeles.VoyageurForm;
 import com.kinga.microservice.reservation.converters.FromVoyageur;
 import com.kinga.microservice.reservation.domain.Voyageur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
  */
 @Controller
 public class ReservationController {
-    private ReservationService reservationService;
+    private VoyageurService voyageurService;
 
     private FromVoyageur fromVoyageur;
 
@@ -30,8 +30,8 @@ public class ReservationController {
     }
 
     @Autowired
-    public void setvoyageurService(ReservationService reservationService) {
-        this.reservationService = reservationService;
+    public void setvoyageurService(VoyageurService voyageurService) {
+        this.voyageurService = voyageurService;
     }
 
     @RequestMapping("/")
@@ -41,19 +41,19 @@ public class ReservationController {
 
     @RequestMapping({"/reservation/list", "/reservation"})
     public String listvoyageurs(Model model){
-        model.addAttribute("voyageurs", reservationService.listAll());
+        model.addAttribute("voyageurs", voyageurService.listAll());
         return "reservation/list";
     }
 
     @RequestMapping("/reservation/show/{id}")
     public String getvoyageur(@PathVariable String id, Model model){
-        model.addAttribute("voyageur", reservationService.getById(id));
+        model.addAttribute("voyageur", voyageurService.getById(id));
         return "voyageur/show";
     }
 
     @RequestMapping("reservation/edit/{id}")
     public String edit(@PathVariable String id, Model model){
-        Voyageur voyageur = reservationService.getById(id);
+        Voyageur voyageur = voyageurService.getById(id);
         VoyageurForm voyageurForm = fromVoyageur.convert(voyageur);
 
         model.addAttribute("voyageurForm", voyageurForm);
@@ -73,14 +73,14 @@ public class ReservationController {
             return "reservation/voyageurform";
         }
 
-        Voyageur savedVoyageur = reservationService.saveOrUpdatevoyageurForm(voyageurForm);
+        Voyageur savedVoyageur = voyageurService.saveOrUpdatevoyageurForm(voyageurForm);
 
         return "redirect:/reservation/show/" + savedVoyageur.getId();
     }
 
     @RequestMapping("/reservation/delete/{id}")
     public String delete(@PathVariable String id){
-        reservationService.delete(id);
+        voyageurService.delete(id);
         return "redirect:/reservation/list";
     }
 }

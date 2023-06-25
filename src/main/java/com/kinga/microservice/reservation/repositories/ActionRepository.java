@@ -5,7 +5,7 @@ import com.kinga.microservice.reservation.domain.Reservation;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by jt on 1/10/17.
+ *  Created by tokinao on 25/06/23.
  */
 public interface ActionRepository extends CrudRepository<Action, String> {
 

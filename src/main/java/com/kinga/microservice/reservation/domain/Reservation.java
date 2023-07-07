@@ -3,6 +3,7 @@ package com.kinga.microservice.reservation.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document(collection = "reservation")
@@ -12,6 +13,7 @@ public class Reservation {
     private String numero;
     private String utilisateur;
     private String codeValidation;
+    @NotNull
     private Voyage voyage;
     private List<Reserved> reserveds;
 

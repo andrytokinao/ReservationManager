@@ -1,6 +1,7 @@
 package com.kinga.microservice.reservation.domain;
 
-import com.kinga.microservice.reservation.modeles.Position;
+import com.kinga.microservice.external.service.modele.Lieu;
+import com.kinga.microservice.reservation.modeles.Place;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -14,9 +15,9 @@ public abstract class Reserved {
     private ObjectId _id;
     @NotNull
     private String user;
-    private Integer depart;
-    private Integer destination;
-    private Position position ;
+    private Lieu depart;
+    private Lieu destination;
+    private Place place ;
     private String type;
     @DBRef
     private Reservation reservation;
@@ -42,28 +43,28 @@ public abstract class Reserved {
         this.user = user;
     }
 
-    public Integer getDepart() {
+    public Lieu getDepart() {
         return depart;
     }
 
-    public void setDepart(Integer depart) {
+    public void setDepart(Lieu depart) {
         this.depart = depart;
     }
 
-    public Integer getDestination() {
+    public Lieu getDestination() {
         return destination;
     }
 
-    public void setDestination(Integer destination) {
+    public void setDestination(Lieu destination) {
         this.destination = destination;
     }
 
-    public Position getPosition() {
-        return position;
+    public Place getPlace() {
+        return place;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public Voyage getVoyage() {

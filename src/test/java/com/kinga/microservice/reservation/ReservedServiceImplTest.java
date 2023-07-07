@@ -3,6 +3,7 @@ package com.kinga.microservice.reservation;
 import com.kinga.microservice.reservation.domain.Reservation;
 import com.kinga.microservice.reservation.domain.Reserved;
 import com.kinga.microservice.reservation.domain.Voyageur;
+import com.kinga.microservice.external.service.modele.Lieu;
 import com.kinga.microservice.reservation.repositories.ReservationRepository;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -16,9 +17,9 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ReservationServiceImplTest extends TestCase {
+public class ReservedServiceImplTest extends TestCase {
     @Autowired
-    ReservationServiceImpl reservationService;
+    ReservedServiceImpl reservationService;
     @Autowired
     ReservationRepository reservationRepository;
     @Test
@@ -28,14 +29,18 @@ public class ReservationServiceImplTest extends TestCase {
         reservation.setCodeValidation("22222");
         reservation.setNumero("RE-2521");
         Voyageur v1 = new Voyageur();
+        Lieu depart = new Lieu("01","Antananarivo");
+        Lieu arrive = new Lieu("02","Antananarivo");
         for(int i = 0 ; i< 10 ; i++){
             v1.setIdClient("Cient "+i);
             v1.setContact("Contact 1");
-            v1.setDepart(200);
-            v1.setDestination(33);
+            v1.setDepart(new Lieu());
+            v1.setDestination(new Lieu());
             v1.setFirstName("First name "+i);
             v1.setLastName("Last name "+i);
             v1.setReservation(reservation);
+            v1.setDepart(depart);
+            v1.setDestination(arrive);
             reserveds.add(v1);
         }
        Reservation reservationSaved = reservationService.updateOrcreateReservation(reservation);
@@ -47,6 +52,7 @@ public class ReservationServiceImplTest extends TestCase {
         reservation.setCodeValidation("256");
         reservation.setNumero("RE-25221");
         reservation.setReserveds(reserveds);
+        reservation.setVoyage(null);
         reservationService.updateOrcreateReservation(reservation);
         assertEquals(reservationRepository.count(),2);
     }

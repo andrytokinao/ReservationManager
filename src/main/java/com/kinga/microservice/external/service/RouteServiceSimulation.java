@@ -8,17 +8,16 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 @Service
-public class DirectionServiceSimulation implements DirectionService{
+public class RouteServiceSimulation implements RouteService {
 
     @Override
     public List<Lieu> getEscales(String idLigne) {
         List<Lieu> lieus = new ArrayList<>();
-        for(int i = 1 ; i < 11 ; i++){
-            lieus.add(new Lieu("0"+i,"Lieu "+i));
+        for(int i = 1 ; i <= 20 ; i++){
+            lieus.add(new Lieu(""+i,"Lieu "+i));
         }
         return lieus;
     }
@@ -27,7 +26,7 @@ public class DirectionServiceSimulation implements DirectionService{
     public List<Lieu> getEscales(Lieu from, Lieu to) {
         List<Lieu> lieus = new ArrayList<>();
         for(int i = 1 ; i < 11 ; i++){
-            lieus.add(new Lieu("0"+i,"Lieu "+i));
+            lieus.add(new Lieu(""+i,"Lieu "+i));
         }
         return lieus;
     }
@@ -74,7 +73,7 @@ public class DirectionServiceSimulation implements DirectionService{
 
     @Override
     public Lieu getLieuById(String id) {
-        return new Lieu("01","Lieu ");
+        return new Lieu(id,"Lieu "+id);
 
     }
 }

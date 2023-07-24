@@ -1,10 +1,19 @@
 package com.kinga.microservice.external.service.modele;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Lieu {
     String id ;
     String name;
 
     public Lieu() {
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Lieu))
+            return false;
+        return StringUtils.equals(this.getId(),((Lieu) obj).getId());
     }
 
     public Lieu(String id, String name) {

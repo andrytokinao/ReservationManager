@@ -1,7 +1,7 @@
 package com.kinga.microservice.reservation.controllers;
 
 
-import com.kinga.microservice.reservation.VoyageurService;
+import com.kinga.microservice.reservation.services.VoyageurService;
 import com.kinga.microservice.reservation.modeles.VoyageurForm;
 import com.kinga.microservice.reservation.converters.FromVoyageur;
 import com.kinga.microservice.reservation.domain.Voyageur;

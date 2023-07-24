@@ -1,5 +1,7 @@
 package com.kinga.microservice.reservation.modeles;
 
+import com.kinga.microservice.reservation.domain.Place;
+
 import java.util.List;
 
 public class PlaceDispo {

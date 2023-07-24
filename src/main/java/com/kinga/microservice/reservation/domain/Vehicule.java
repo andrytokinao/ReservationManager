@@ -1,14 +1,9 @@
 package com.kinga.microservice.reservation.domain;
 
-import com.kinga.microservice.reservation.modeles.Place;
-
-import java.util.List;
-
 public class Vehicule {
     private String id;
     private String marque;
     private String matricule;
-    private Vehicule vehicule;
     private TypeVoiture typeVoiture;
 
     public Vehicule() {
@@ -39,13 +34,6 @@ public class Vehicule {
         this.matricule = matricule;
     }
 
-    public Vehicule getVehicule() {
-        return vehicule;
-    }
-
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
-    }
 
     public TypeVoiture getTypeVoiture() {
         return typeVoiture;

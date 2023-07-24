@@ -12,9 +12,9 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DirectionServiceTest extends TestCase {
+public class RouteServiceTest extends TestCase {
     @Autowired
-    DirectionServiceSimulation directionService;
+    RouteServiceSimulation directionService;
     @Test
     public void testSimulationPrix(){
         List<FresTransport> frees = directionService.getFres("test ligne", "test categorie");

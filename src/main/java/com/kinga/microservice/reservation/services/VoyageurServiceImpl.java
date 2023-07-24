@@ -1,4 +1,4 @@
-package com.kinga.microservice.reservation;
+package com.kinga.microservice.reservation.services;
 
 import com.kinga.microservice.reservation.modeles.VoyageurForm;
 import com.kinga.microservice.reservation.converters.ToVoyageur;

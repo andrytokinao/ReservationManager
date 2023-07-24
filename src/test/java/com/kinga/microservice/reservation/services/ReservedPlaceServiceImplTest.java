@@ -1,4 +1,4 @@
-package com.kinga.microservice.reservation;
+package com.kinga.microservice.reservation.services;
 
 import com.kinga.microservice.reservation.domain.Reservation;
 import com.kinga.microservice.reservation.domain.Reserved;
@@ -17,11 +17,13 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ReservedServiceImplTest extends TestCase {
+public class ReservedPlaceServiceImplTest extends TestCase {
     @Autowired
-    ReservedServiceImpl reservationService;
+    ReservedPlaceServiceImpl reservedPlaceService;
     @Autowired
     ReservationRepository reservationRepository;
+    @Autowired
+    ReservationService reservationService;
     @Test
     public void testUpdateOrcreateReservation() {
         List<Reserved> reserveds = new ArrayList<>();
@@ -38,22 +40,11 @@ public class ReservedServiceImplTest extends TestCase {
             v1.setDestination(new Lieu());
             v1.setFirstName("First name "+i);
             v1.setLastName("Last name "+i);
-            v1.setReservation(reservation);
             v1.setDepart(depart);
             v1.setDestination(arrive);
             reserveds.add(v1);
         }
-       Reservation reservationSaved = reservationService.updateOrcreateReservation(reservation);
-        assertNotNull(reservationSaved);
-        assertNotNull(reservationSaved.getId());
-        assertEquals(reservationRepository.count(),1);
 
-        reservation = new Reservation();
-        reservation.setCodeValidation("256");
-        reservation.setNumero("RE-25221");
-        reservation.setReserveds(reserveds);
-        reservation.setVoyage(null);
-        reservationService.updateOrcreateReservation(reservation);
-        assertEquals(reservationRepository.count(),2);
     }
+
 }

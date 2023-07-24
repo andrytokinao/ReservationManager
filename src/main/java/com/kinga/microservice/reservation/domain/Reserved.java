@@ -1,13 +1,14 @@
 package com.kinga.microservice.reservation.domain;
 
 import com.kinga.microservice.external.service.modele.Lieu;
-import com.kinga.microservice.reservation.modeles.Place;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Document(collection = "reserved")
 public abstract class Reserved {
@@ -16,13 +17,12 @@ public abstract class Reserved {
     @NotNull
     private String user;
     private Lieu depart;
+    private BigDecimal fres;
     private Lieu destination;
-    private Place place ;
+    private List<ReservedPlace> reservedPlace ;
     private String type;
-    @DBRef
-    private Reservation reservation;
-    @DBRef
-    private Voyage voyage;
+    private String  idReservation;
+    private String idVoyage;
 
     public Reserved() {
     }
@@ -59,20 +59,28 @@ public abstract class Reserved {
         this.destination = destination;
     }
 
-    public Place getPlace() {
-        return place;
+    public ObjectId get_id() {
+        return _id;
     }
 
-    public void setPlace(Place place) {
-        this.place = place;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
-    public Voyage getVoyage() {
-        return voyage;
+    public List<ReservedPlace> getReservedPlace() {
+        return reservedPlace;
     }
 
-    public void setVoyage(Voyage voyage) {
-        this.voyage = voyage;
+    public void setReservedPlace(List<ReservedPlace> reservedPlace) {
+        this.reservedPlace = reservedPlace;
+    }
+
+    public String getIdVoyage() {
+        return idVoyage;
+    }
+
+    public void setIdVoyage(String idVoyage) {
+        this.idVoyage = idVoyage;
     }
 
     public String getType() {
@@ -83,12 +91,19 @@ public abstract class Reserved {
         this.type = type;
     }
 
-    public Reservation getReservation() {
-        return reservation;
+    public String getIdReservation() {
+        return idReservation;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
+    public void setIdReservation(String idReservation) {
+        this.idReservation = idReservation;
     }
-// Constructeurs, getters et setters
+
+    public BigDecimal getFres() {
+        return fres;
+    }
+
+    public void setFres(BigDecimal fres) {
+        this.fres = fres;
+    }
 }

@@ -1,16 +1,19 @@
 package com.kinga.microservice.reservation.domain;
 
+import com.kinga.microservice.external.service.modele.Company;
 import com.kinga.microservice.external.service.modele.FresTransport;
 import com.kinga.microservice.external.service.modele.Ligne;
 import com.kinga.microservice.external.service.modele.Lieu;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Document(collection = "voyage")
 public class Voyage {
-
-    private String company;
+    @Id
+    private String id;
+    private Company company;
     private Vehicule vehicule;
 
     private String numero;
@@ -23,13 +26,22 @@ public class Voyage {
     private List<FresTransport> fresTransports;
 
     private List<Reservation> reservations;
-
+    private List<Personne> chauffeurs;
+    private List<Personne> responsables;
+    private List<Place> places;
 
 
 
     public Voyage() {
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNumero() {
         return numero;
@@ -80,11 +92,11 @@ public class Voyage {
         this.ligne = ligne;
     }
 
-    public String getCompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
     public List<FresTransport> getFresTransports() {
@@ -98,5 +110,29 @@ public class Voyage {
     }
     public void setFresTransports(List<FresTransport> fresTransports) {
         this.fresTransports = fresTransports;
+    }
+
+    public List<Personne> getChauffeurs() {
+        return chauffeurs;
+    }
+
+    public void setChauffeurs(List<Personne> chauffeurs) {
+        this.chauffeurs = chauffeurs;
+    }
+
+    public List<Personne> getResponsables() {
+        return responsables;
+    }
+
+    public void setResponsables(List<Personne> responsables) {
+        this.responsables = responsables;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(List<Place> places) {
+        this.places = places;
     }
 }

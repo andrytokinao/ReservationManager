@@ -1,7 +1,5 @@
 package com.kinga.microservice.reservation.domain;
 
-import com.kinga.microservice.reservation.modeles.Place;
-
 import java.util.ArrayList;
 import java.util.List;
 
